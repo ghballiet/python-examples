@@ -1,0 +1,35 @@
+{% include "before.html" %}
+	<table>
+		<thead>
+			<th>Title</th>
+			<th>Written</th>
+			<th>Composer</th>
+			{% if user.is_authenticated %}
+			<th></th>
+			{% endif %}
+		</thead>
+		<tbody>
+		{% for item in items %}
+			<tr>
+				<td><a href="/?id={{ item.id }}">{{ item.title }}</a></td>
+				<td>{{ item.date_written }}</td>
+				<td>{{ item.composer }}</td>
+				{% if user.is_authenticated %}
+				<td><a href="javascript:confirm_del('{{item.id}}','{{item.title}}')">Delete</a></td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	{% if user.is_authenticated %}
+	<script type="text/javascript">
+	<!--
+	function confirm_del(id,title) {
+		if(confirm("Are you sure you want to delete \"" + title + "\" from the database?\n\nThis action cannot be undone.")) {
+			window.location = "/delete_piece?id=" + id;
+		}
+	}
+	//-->
+	</script>
+	{% endif %}
+{% include "after.html" %}

@@ -1,0 +1,16 @@
+{% include "before.html" %}
+<table>
+	<thead>
+		<th>Title</th>
+		<th>Written</th>
+	</thead>
+	<tbody>
+	{% for item in c.piece_set.all %}
+		<tr>
+			<td><a href="/?id={{ item.id }}">{{ item.title }}</a></td>
+			<td>{{ item.date_written }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% include "after.html" %}

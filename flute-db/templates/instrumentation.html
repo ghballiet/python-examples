@@ -1,0 +1,10 @@
+{% include "before.html" %}
+<table>
+	<thead><th>Title</th><th>Pieces</th></thead>
+	<tbody>
+	{% for item in items %}
+		<tr><td><a href="/instrument?id={{item.id}}">{{item}}</a></td><td>{{ item.piece_set.all|length }}</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% include "after.html" %}

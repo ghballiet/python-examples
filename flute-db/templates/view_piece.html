@@ -1,0 +1,12 @@
+{% include "before.html" %}
+<table>
+	<tr><th>Title</th><td>{{ item.title }}</td></tr>
+	<tr><th>Written</th><td>{{ item.date_written }}</td></tr>
+	<tr><th>Composer</th><td>{{ item.composer }}</td></tr>
+	<tr><th>Instrumentation</th><td>{{ item.instrumentation }}</td></tr>
+	<tr><th>Score Image</th><td><a target="_blank" href="/media/{{ item.score_image }}">Click to view score image</a> (opens in new window)</td></tr>
+	<tr><th>Sound Clip</th><td><a target="_blank" href="{{ item.sound_clip }}">Click to hear clip</a> (opens in new window)</td></tr>
+	<tr><th>Program Notes</th><td><p>{{ item.program_notes }}</p></td></tr>
+</table>
+
+{% include "after.html" %}

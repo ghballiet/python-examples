@@ -1,0 +1,35 @@
+{% include "before.html" %}
+    <form method="GET">
+        <table>
+			<tr><th>Search for:</th><td class="field"><input name="q" type="text"></td><td class="btn"><input type="submit" class="btn" value="search"></td></tr>
+        </table>
+    </form>
+	{% if results %}
+	<table>
+		<thead><th>Type</th><th>Result</th></thead>
+		<tbody>
+	{% for title,item in results %}
+		{% ifequal title "Piece" %}
+		<tr><td>{{ title }}</td><td><a href="/?id={{item.id}}">{{ item }}</a></td></tr>
+		{% else %}
+		{% ifequal title "Bibliography" %}
+		<tr><td>{{ title }}</td><td><a href="/biblio?id={{item.id}}">{{ item }}</a></td></tr>
+		{% else %}
+		{% ifequal title "Composer" %}
+		<tr><td>{{ title }}</td><td><a href="/composers?id={{item.id}}">{{ item }}</a></td></tr>
+		{% else %}
+		{% ifequal title "Instrumentation" %}
+		<tr><td>{{ title }}</td><td><a href="/instrument?id={{item.id}}">{{ item }}</a></td></tr>
+		{% else %}
+		<tr><td>{{ title }}</td><td>{{ item }}</td></tr>		
+		{% endifequal %}
+		{% endifequal %}
+		{% endifequal %}
+		{% endifequal %}
+	{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	No results found.
+	{% endif %}
+{% include "after.html" %}

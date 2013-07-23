@@ -1,0 +1,41 @@
+{% include "before.html" %}
+<table>
+	<thead>
+		<th>Type</th>
+		<th>Category</th>
+		<th>Entry</th>
+		{% if user.is_authenticated %}
+		<th></th>
+		{% endif %}
+	</thead>
+	<tbody>
+		{% for item in items %}
+		<tr><td>{{ item.item_type }}</td><td>{{ item.category }}</td><td><a href="/biblio?id={{ item.id }}">
+			{% ifequal item.item_type "Book" %}
+			{{ item.author }}. <i>{{ item.title }}</i>.{% if item.editor %} Edited by {{ item.editor }}.{% endif %}{% if item.translator %} Trans. by {{ item.translator }}.{% endif %} {{ item.city }}: {{ item.publisher }}, {{ item.year }}.
+			{% else %}
+				{% ifequal item.item_type "Article" %}
+				{{ item.author }}. &quot;{{ item.title }}&quot;. <i>{{ item.journal_name }}</i> {{ item.journal_volume_no }} ({{ item.year}}): {{ item.pages }}.
+				{% endifequal %}
+			{% endifequal %}
+		</a>
+		</td>
+		{% if user.is_authenticated %}
+		<td><a href="javascript:confirm_del('{{ item.id }}','{{ item }}')">Delete</a></td>
+		{% endif %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% if user.is_authenticated %}
+<script type="text/javascript">
+<!--
+function confirm_del(id,title) {
+	if(confirm("Are you sure you want to delete \"" + title + "\" from the database?\n\nThis action cannot be undone.")) {
+		window.location = "/delete_biblio?id=" + id;
+	}
+}
+//-->
+</script>
+{% endif %}
+{% include "after.html" %}

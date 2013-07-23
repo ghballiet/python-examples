@@ -1,0 +1,18 @@
+{% include "before.html" %}
+<table>
+	<thead><th>Name</th><th>Birth Date</th><th>Death Date</th><th>Pieces</th></thead>
+	<tbody>
+		{% for item in items %}
+		<tr>
+			<td><a href="/composers?id={{item.id}}">{{ item.name }}</a></td>
+			<td>{{ item.birth_date }}</td>
+			<td>{{ item.death_date }}</td>
+			<td>{{ item.piece_set.all|length }}</td>
+			{% if user.is_authenticated %}
+			<!-- deletion link goes here -->
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% include "after.html" %}

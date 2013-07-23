@@ -1,0 +1,11 @@
+<ul class="nav">
+	<li><a href="/">Home</a></li>
+	<li><a href="/biblio/">Bibliography</a></li>
+	<li><a href="/composers/">Composers</a></li>
+	<li><a href="/instrument/">Instrumentation</a></li>
+	<li><a href="/search/">Search</a></li>
+	{% if user.is_authenticated %}
+	<li><a href="/manage_db/">Manage DB</a></li>
+	<li><a href="/logout/">Logout</a></li>
+	{% endif %}
+</ul>

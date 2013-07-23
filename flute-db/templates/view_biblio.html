@@ -1,0 +1,20 @@
+{% include "before.html" %}
+<table>
+	<tr><th>Type</th><td>{{ item.item_type }}</td></tr>
+	<tr><th>Category</th><td>{{ item.category }}</td></tr>
+	<tr><th>Title</th><td>{{ item.title }}</td></tr>
+	<tr><th>Author</th><td>{{ item.author }}</td></tr>
+	{% if item.editor %}<tr><th>Editor</th><td>{{ item.editor }}</td></tr>{% endif %}
+	{% if item.translator %}<tr><th>Translator</th><td>{{ item.translator }}</td></tr>{% endif %}
+	{% if item.publisher %}<tr><th>Publisher</th><td>{{ item.publisher }}</td></tr>{% endif %}
+	{% if item.city %}<tr><th>City</th><td>{{ item.city }}</td></tr>{% endif %}
+	{% if item.year %}<tr><th>Year</th><td>{{ item.year }}</td></tr>{% endif %}
+	{% if item.journal_name %}<tr><th>Journal Name</th><td>{{ item.journal_name }}</td></tr>{% endif %}
+	{% if item.journal_volume_no %}<tr><th>Journal Volume No.</th><td>{{ item.journal_volume_no }}</td></tr>{% endif %}
+	{% if item.pages %}<tr><th>Pages</th><td>{{ item.pages }}</td></tr>{% endif %}
+	{% if item.website_name %}<tr><th>Website Name</th><td>{{ item.website_name }}</td></tr>{% endif %}
+	{% if item.website_address %}<tr><th>Website Address</th><td><a target="_blank" href="{{item.website_address}}">{{item.website_address}} (opens in new window)</td></tr>{% endif %}
+	{% if item.date_accessed %}<tr><th>Date Accessed</th><td>{{ item.date_accessed }}</td></tr>{% endif %}
+	{% if item.annotation %}<tr><th>Annotation</th><td><p>{{ item.annotation }}</p></td></tr>{% endif %}
+</table>
+{% include "after.html" %}

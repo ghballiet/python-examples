@@ -1,0 +1,16 @@
+{% include "before.html" %}
+	{% if success %}
+		<p class="success"><b>{{ success_item }}</b>{{ success }}</p>
+	{% endif %}
+	{% if form.errors %}
+		<p class="error">{{ errors }}{{ form.errors }}</p>
+	{% endif %}
+			<form method="POST" enctype="multipart/form-data">
+				<table>
+					{% for field in form %}
+						<tr><th>{{ field.label }}</th><td class="field">{{ field }}</tr>
+					{% endfor %}
+				</table>
+				<input type="submit" value="Save" class="btn">
+			</form>
+{% include "after.html" %}
